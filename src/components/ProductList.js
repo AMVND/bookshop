@@ -1,23 +1,46 @@
-import React from "react";
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import ProductItem from "./ProductItem";
-const ProductList = () => {
-    // Dummy data for products
-    const products = [
-        { id: 1, title: 'Book 1', author: 'Author 1', price: 19.99 },
-        { id: 2, title: 'Book 2', author: 'Author 2', price: 24.99 },
-        { id: 3, title: 'Book 1', author: 'Author 1', price: 19.99 },
-        { id: 4, title: 'Book 2', author: 'Author 2', price: 24.99 },
-        // Add more products here
-    ];
 
+
+const GOOGLE_BOOKS_API_KEY = 'AIzaSyDDQquRFoP1gbup1rudzE01kKx8WqvAIck';
+
+const ProductList = ({ searchTerm, searchResults }) => {
+    const [books, setBooks] = useState([]);
+  
+    useEffect(() => {
+      const fetchBooks = async () => {
+        try {
+            const query = searchTerm ? `q=${searchTerm}` : 'q=subject:fiction';
+            const response = await axios.get(`https://www.googleapis.com/books/v1/volumes?${query}&key=${GOOGLE_BOOKS_API_KEY}`);
+            const booksData = response.data.items.map(item => {
+              const volumeInfo = item.volumeInfo;
+              return {
+                id: item.id,
+                title: volumeInfo.title,
+                author: volumeInfo.authors ? volumeInfo.authors.join(', ') : 'Unknown Author',
+                image: volumeInfo.imageLinks ? volumeInfo.imageLinks.thumbnail : 'https://via.placeholder.com/150',
+                price: volumeInfo.saleInfo && volumeInfo.saleInfo.listPrice ? volumeInfo.saleInfo.listPrice.amount : null,
+              };
+            });
+            setBooks(booksData);
+          } catch (error) {
+            console.error("Error fetching books from Google Books API:", error);
+          }
+      };
+  
+      if (!searchTerm) {
+        fetchBooks();
+      }
+    }, [searchTerm]);
+  
     return (
-        <div className="col-span-1 md:col-span-3">
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-                {products.map(product => (
-                    <ProductItem key={product.id} title={product.title} author={product.author} price={product.price} />
-                ))}
-            </div>
-        </div>
+      <div className="grid grid-cols-1 md:grid-cols-5 col-span-3 gap-6">
+        {(searchResults || books).map(book => (
+          <ProductItem key={book.id} book={book} />
+        ))}
+      </div>
     );
-};
+  };
+
 export default ProductList;

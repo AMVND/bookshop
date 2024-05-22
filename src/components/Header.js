@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 function Header() {
     return (
-        <div className="container mx-auto mt-6 max-w-screen-xl">
+        <div className="container mx-auto mt-6 max-w-screen">
             <div className="bg-white rounded-lg shadow-md overflow-hidden">
                 <div className="relative">
                     <img
-                        src="https://via.placeholder.com/1200x300"
+                        src="src\assest\thumbnail.png"
                         alt="Banner"
                         className="w-full"
                     />
