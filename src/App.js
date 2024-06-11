@@ -1,6 +1,6 @@
 import "./App.css";
 import { Fragment } from "react";
-import Navbar from "./Components/Layout/Navbar";
+import NavigationBar from "./Components/Layout/Navbar";
 import ScrollToTop from "react-scroll-to-top";
 import Footer from "./Components/Layout/Footer";
 import Router from "./Components/Routes/Router";
@@ -9,7 +9,7 @@ import Router from "./Components/Routes/Router";
 function App(props) {
     return (
         <Fragment>
-            <Navbar />
+            <NavigationBar />
             {/* <DrawerHeader /> */}
             {/* <Sidenav /> */}
             {/* <br/><br/><br/> */}

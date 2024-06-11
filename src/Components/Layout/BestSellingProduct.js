@@ -2,6 +2,7 @@ import React from "react";
 import ProductItem from "./ProductItem";
 import API from "../Api/Api";
 import axios from "axios";
+import Spinner from 'react-bootstrap/Spinner';
 export default function BestSellingProduct() {
     const [product, setProduct] = React.useState([]);
     const [time1] = React.useState(new Date("2021-12-30"));
@@ -30,7 +31,11 @@ export default function BestSellingProduct() {
             });
     }, [time1, time2]);
     const Loading = () => {
-        return <>Loading . . .</>;
+        return (
+            <Spinner animation="border" role="status">
+              <span className="visually-hidden">Loading...</span>
+            </Spinner>
+          );
     };
     const ShowProducts = () => {
         return product.map((item, i) => {
@@ -44,7 +49,7 @@ export default function BestSellingProduct() {
         <div className="container my-5 py-5">
             <div className="row">
                 <div className="col-12 mb-5">
-                    <h1 className="display-6 fw-bolder text-center">Sản phẩm bán chạy nhất</h1>
+                    <h1 className="display-6 fw-bolder text-center">Sách bán chạy</h1>
                     <hr />
                 </div>
             </div>

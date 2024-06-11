@@ -1,6 +1,7 @@
 import React from "react";
 import ProductCategoryItem from "./ProductCategoryItem";
 import API from "../Api/Api";
+import Spinner from 'react-bootstrap/Spinner';
 function ProductByCategory() {
     const [productData, setProductData] = React.useState([]);
 
@@ -35,7 +36,11 @@ function ProductByCategory() {
 
     const groupedProducts = groupProductsByCategory();
     const Loading = () => {
-        return <>Loading . . .</>;
+        return (
+            <Spinner animation="border" role="status">
+              <span className="visually-hidden">Loading...</span>
+            </Spinner>
+          );
     };
 
     React.useEffect(() => {
