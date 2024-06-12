@@ -5,18 +5,17 @@ import com.example.bookshop.config.SecurityUtils;
 import com.example.bookshop.domain.ImageUser;
 import com.example.bookshop.domain.Role;
 import com.example.bookshop.domain.User;
+import com.example.bookshop.dto.UserDto;
 import com.example.bookshop.repository.ImageUserRepository;
 import com.example.bookshop.repository.UserRepository;
-import com.example.bookshop.dto.UserDto;
-import com.example.bookshop.token.Tokens;
 import com.example.bookshop.token.TokenRepository;
 import com.example.bookshop.token.TokenType;
+import com.example.bookshop.token.Tokens;
 import com.example.bookshop.util.EmailUtil;
 import com.example.bookshop.util.ImageUtils;
 import com.example.bookshop.util.OtpUtil;
 import jakarta.mail.MessagingException;
 import lombok.RequiredArgsConstructor;
-import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -26,7 +25,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.time.Instant;
 import java.util.Date;
 
 @Service
@@ -139,6 +137,7 @@ public class AuthenticationService {
                 .build();
         tokenRepository.save(token);
     }
+
     private void saveImageUser(String email) throws IOException {
         // test save image
         User user = userRepository.findByEmail(email).orElseThrow();
@@ -155,7 +154,7 @@ public class AuthenticationService {
         imageUser.setImageData(ImageUtils.compressImage(imageData));
 
         imageUserRepository.save(imageUser);
-        user.setPhotos("/api/v1/auth/image/user/user-"+user.getId());
+        user.setPhotos("/api/v1/auth/image/user/user-" + user.getId());
         userRepository.save(user);
     }
 

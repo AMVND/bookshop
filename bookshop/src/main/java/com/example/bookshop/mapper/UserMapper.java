@@ -1,10 +1,12 @@
 package com.example.bookshop.mapper;
+
 import com.example.bookshop.domain.User;
 import com.example.bookshop.dto.UserDto;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+
 @Component
 public class UserMapper implements EntityMapper<UserDto, User> {
 

@@ -1,0 +1,72 @@
+body{
+    height: 100%;
+}
+.App {
+    text-align: center;
+}
+
+.App-logo {
+    height: 40vmin;
+    pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .App-logo {
+        animation: App-logo-spin infinite 20s linear;
+    }
+}
+
+.App-header {
+    background-color: #282c34;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+}
+
+.App-link {
+    color: #ffffff;
+}
+
+@keyframes App-logo-spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+a {
+    text-decoration: none !important;
+}
+.navbar a {
+    color: inherit;
+    font-family: "monospace";
+}
+.navbar a:hover {
+    color: #1989fa !important;
+}
+.banner {
+    background: radial-gradient(#fff, #dadada);
+}
+.footer {
+    padding-top: 5vh;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+.menu-setting a {
+    color: #000;
+}
+.user-name-style {
+    font-weight: 900;
+    /* background: url(https://media.giphy.com/media/ceCgIb3Pw5xbq/giphy.gif);
+    color: transparent;
+    background-clip: text;
+    background-size: cover;
+    background-position: center;
+    text-shadow: 2px 2px 2px #ffffff1f, -2px -2px 4px #ffffff1f, 2px -2px 4px #ffffff1f, -2px 2px 2px #ffffff1f; */
+}

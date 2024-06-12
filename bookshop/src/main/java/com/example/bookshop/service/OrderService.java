@@ -2,11 +2,11 @@ package com.example.bookshop.service;
 
 import com.example.bookshop.config.SecurityUtils;
 import com.example.bookshop.domain.*;
-import com.example.bookshop.repository.*;
 import com.example.bookshop.dto.OrderDto;
 import com.example.bookshop.mapper.CartItemMapOrderItemMapper;
 import com.example.bookshop.mapper.CartMapOrderMapper;
 import com.example.bookshop.mapper.OrderMapper;
+import com.example.bookshop.repository.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -40,7 +40,7 @@ public class OrderService {
     }
 
     public OrderDto findByCarts(Long carts) {
-        Order entity = orderRepository.findByCart(carts).orElseThrow(()-> new RuntimeException("Không tìm thấy!"));
+        Order entity = orderRepository.findByCart(carts).orElseThrow(() -> new RuntimeException("Không tìm thấy!"));
         OrderDto dto = orderMapper.toDo(entity);
         return dto;
     }
@@ -331,7 +331,8 @@ public class OrderService {
                 }
 
 
-            };
+            }
+            ;
             entity.setStatus(5);
             entity.setUpdatedAt(Instant.now());
             orderRepository.save(entity);

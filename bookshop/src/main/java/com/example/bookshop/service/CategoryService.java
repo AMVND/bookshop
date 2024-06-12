@@ -1,9 +1,9 @@
 package com.example.bookshop.service;
 
 import com.example.bookshop.domain.Category;
-import com.example.bookshop.repository.CategoryRepository;
 import com.example.bookshop.dto.CategoryDto;
 import com.example.bookshop.mapper.CategoryMapper;
+import com.example.bookshop.repository.CategoryRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -72,6 +72,7 @@ public class CategoryService {
         CategoryDto dto = categoryMapper.toDo(entity);
         return dto;
     }
+
     // todo: findAllCategory
     public Page<CategoryDto> findAllCategory(int offset, int pageSize, String field, String sort, String title) {
         Page<Category> entity = categoryRepository.findAllCategory(
@@ -82,7 +83,7 @@ public class CategoryService {
     }
 
     public CategoryDto findById(String id) {
-        Category entity = categoryRepository.findById(id).orElseThrow(()-> new RuntimeException("Không tìm thấy category id: "+id));
+        Category entity = categoryRepository.findById(id).orElseThrow(() -> new RuntimeException("Không tìm thấy category id: " + id));
         CategoryDto dto = categoryMapper.toDo(entity);
         return dto;
     }

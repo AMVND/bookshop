@@ -1,10 +1,10 @@
 package com.example.bookshop.auth;
 
 import com.example.bookshop.domain.User;
+import com.example.bookshop.dto.UserDto;
 import com.example.bookshop.repository.UserRepository;
 import com.example.bookshop.service.ImageProductService;
 import com.example.bookshop.service.ImageUserSevice;
-import com.example.bookshop.dto.UserDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -48,6 +48,7 @@ public class AuthenticationController {
             return null;
         }
     }
+
     // todo: check mobile
     @GetMapping("/check-mobile")
     public String checkMobile(@RequestParam String mobile) {
@@ -58,9 +59,10 @@ public class AuthenticationController {
             return null;
         }
     }
+
     // todo: forgot password - quên mật khẩu
     @PostMapping("/forgot-password")
-    public ResponseEntity<?> forgotPassword(@RequestBody AuthenticationRequest request){
+    public ResponseEntity<?> forgotPassword(@RequestBody AuthenticationRequest request) {
         return ResponseEntity.ok(service.forgotPassword(request));
     }
 
@@ -68,7 +70,7 @@ public class AuthenticationController {
     @PostMapping("/change-password")
     public ResponseEntity<?> changePassword(
             @RequestParam String passOld, @RequestParam String passNew
-    ){
+    ) {
         return ResponseEntity.ok(service.changePassword(passOld, passNew));
     }
 
@@ -81,9 +83,10 @@ public class AuthenticationController {
                 .body(imageData);
 
     }
+
     @GetMapping("/image/product/{fileName}")
-    public ResponseEntity<?> downloadProductImage(@PathVariable String fileName){
-        byte [] imageProduct = imageProductService.downloadImage(fileName);
+    public ResponseEntity<?> downloadProductImage(@PathVariable String fileName) {
+        byte[] imageProduct = imageProductService.downloadImage(fileName);
         return ResponseEntity.status(HttpStatus.OK)
                 .contentType(MediaType.valueOf("image/png"))
                 .body(imageProduct);

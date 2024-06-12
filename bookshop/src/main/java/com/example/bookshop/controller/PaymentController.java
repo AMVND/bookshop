@@ -1,4 +1,5 @@
 package com.example.bookshop.controller;
+
 import com.example.bookshop.config.Config;
 import com.example.bookshop.dto.PaymentDto;
 import com.example.bookshop.dto.TransactionStatusDto;
@@ -96,9 +97,9 @@ public class PaymentController {
 //            @RequestParam(value = "vnp_BankCode") String bankCode,
 //            @RequestParam(value = "vnp_OrderInfo") String order,
             @RequestParam(value = "vnp_ResponseCode") String responseCode
-    ){
+    ) {
         TransactionStatusDto transactionStatusDto = new TransactionStatusDto();
-        if (responseCode.equals("00")){
+        if (responseCode.equals("00")) {
             transactionStatusDto.setStatus("Ok");
             transactionStatusDto.setMessage("Succsessfully");
             transactionStatusDto.setData("");

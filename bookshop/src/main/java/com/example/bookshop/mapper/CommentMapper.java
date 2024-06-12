@@ -1,4 +1,5 @@
 package com.example.bookshop.mapper;
+
 import com.example.bookshop.domain.Comment;
 import com.example.bookshop.dto.CommentDto;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ public class CommentMapper implements EntityMapper<CommentDto, Comment> {
     UserMapper userMapper;
     @Autowired
     ProductMapper productMapper;
+
     @Override
     public CommentDto toDo(Comment entity) {
         CommentDto dto = new CommentDto();

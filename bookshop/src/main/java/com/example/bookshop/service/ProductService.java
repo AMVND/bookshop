@@ -2,11 +2,11 @@ package com.example.bookshop.service;
 
 import com.example.bookshop.config.SecurityUtils;
 import com.example.bookshop.domain.*;
+import com.example.bookshop.dto.ProductDto;
+import com.example.bookshop.mapper.ProductMapper;
 import com.example.bookshop.projection.ProductInfo;
 import com.example.bookshop.projection.RatingInfo;
 import com.example.bookshop.repository.*;
-import com.example.bookshop.dto.ProductDto;
-import com.example.bookshop.mapper.ProductMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -89,12 +89,12 @@ public class ProductService {
             imageProductRepository.save(imageProduct);
             entity.setTitle(dto.getTitle());
             entity.setSlug(dto.getSlug());
-            entity.setAuthor(dto.getAuthor());
+            entity.setSummary(dto.getSummary());
             entity.setPrice(dto.getPrice());
             entity.setDiscount(dto.getDiscount());
             entity.setQuantity(dto.getQuantity());
             entity.setPhotos("/api/v1/auth/image/product/" + entity.getSlug());
-            entity.setDetails(dto.getDetails());
+            entity.setContent(dto.getContent());
             entity.setUpdatedAt(Instant.now());
             if (dto.getCategory() != null) {
                 Optional<Category> category = categoryRepository.findBySlug(dto.getCategory());
@@ -359,8 +359,8 @@ public class ProductService {
 
     // todo: admin thay đổi thuộc tính cho product - không có ảnh
     public String handleChangeProduct(
-            String id, String slug, String title, String author,
-            Float price, Float discount, Integer quantity, String details
+            String id, String slug, String title, String summary,
+            Float price, Float discount, Integer quantity, String content
     ) {
         Product entity = productRepository.findById(id).orElse(null);
         if (entity == null) {
@@ -369,11 +369,11 @@ public class ProductService {
         } else {
             entity.setTitle(title);
             entity.setSlug(slug);
-            entity.setAuthor(author);
+            entity.setSummary(summary);
             entity.setPrice(price);
             entity.setDiscount(discount);
             entity.setQuantity(quantity);
-            entity.setDetails(details);
+            entity.setContent(content);
             productRepository.save(entity);
             System.out.println("cập nhật được thực hiện");
             return "true";

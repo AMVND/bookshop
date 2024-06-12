@@ -107,13 +107,15 @@ public class TransactionController {
 
         return ResponseEntity.status(HttpStatus.OK).body(transactionService.paymentUser(id));
     }
+
     // todo: xác nhận giao dịch
     @PutMapping("/auth/check_payment")
     public ResponseEntity<?> checkPayment(
             @RequestBody CheckPaymentDto checkPaymentDto
-            ){
+    ) {
         return ResponseEntity.status(HttpStatus.OK).body(transactionService.checkPayment(checkPaymentDto));
     }
+
     // todo: admin xác nhận thanh toán cho giao dịch 0 -> 1
     @PutMapping("/auth/admin/{id}")
     public void paymentAdmin(@PathVariable String id) {

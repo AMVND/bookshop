@@ -5,12 +5,12 @@ import com.example.bookshop.domain.Cart;
 import com.example.bookshop.domain.CartItem;
 import com.example.bookshop.domain.Product;
 import com.example.bookshop.domain.User;
+import com.example.bookshop.dto.CartDto;
+import com.example.bookshop.mapper.CartMapper;
 import com.example.bookshop.repository.CartItemRepository;
 import com.example.bookshop.repository.CartRepository;
 import com.example.bookshop.repository.ProductRepository;
 import com.example.bookshop.repository.UserRepository;
-import com.example.bookshop.dto.CartDto;
-import com.example.bookshop.mapper.CartMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -37,7 +37,7 @@ public class CartService {
         if (check != null) {
             System.out.println("Đã có giỏ hàng");
             return "false";
-        } else{
+        } else {
 
             Cart entity = new Cart();
             // Set userId

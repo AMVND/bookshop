@@ -1,4 +1,5 @@
 package com.example.bookshop.service;
+
 import com.example.bookshop.domain.ImageProduct;
 import com.example.bookshop.domain.Product;
 import com.example.bookshop.repository.ImageProductRepository;
@@ -17,9 +18,9 @@ import java.util.Optional;
 @RequiredArgsConstructor
 @Transactional
 public class ImageProductService {
+    private final ProductRepository productRepository;
     @Autowired
     private ImageProductRepository imageProductRepository;
-    private final ProductRepository productRepository;
 
     public String uploadImage(MultipartFile file, String slug) throws IOException {
         ImageProduct entity = imageProductRepository
@@ -27,7 +28,7 @@ public class ImageProductService {
                 .orElse(null);
 
         Product product = productRepository.findBySlug(slug).orElseThrow(
-                ()-> new RuntimeException("không tìm thấy product"));
+                () -> new RuntimeException("không tìm thấy product"));
 
         if (entity == null) {
             System.out.println("chưa có ảnh");

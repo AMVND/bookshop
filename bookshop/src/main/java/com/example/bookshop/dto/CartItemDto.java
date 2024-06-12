@@ -6,7 +6,7 @@ import java.time.Instant;
 
 
 @Data
-public class CartItemDto  {
+public class CartItemDto {
     private Long id;
     private ProductDto product;
     // Biến ảo nhận id của product

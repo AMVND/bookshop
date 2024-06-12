@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class CartItemMapOrderItemMapper implements EntityMapper<CartItem, OrderItem>{
+public class CartItemMapOrderItemMapper implements EntityMapper<CartItem, OrderItem> {
     @Override
     public CartItem toDo(OrderItem orderItem) {
         return null;

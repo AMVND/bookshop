@@ -1,6 +1,5 @@
 package com.example.bookshop.repository;
 
-import com.example.bookshop.domain.Product;
 import com.example.bookshop.domain.User;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -17,9 +16,10 @@ import java.util.Optional;
 @Repository
 public interface UserRepository extends JpaRepository<User, String> {
 
-    String db = "book_shop";
+    String db = "shop";
+
     // Filter by id, first_name, last_name, mobile, email
-    @Query(value = "SELECT * from "+ db +".user as U " +
+    @Query(value = "SELECT * from " + db + ".user as U " +
             "         where U.id like concat('%', :id,'%') " +
             "            and U.first_name like concat('%',:firstName,'%') " +
             "            and U.last_name like concat('%', :lastName ,'%') " +
@@ -34,6 +34,7 @@ public interface UserRepository extends JpaRepository<User, String> {
 
     // find by mobile
     Optional<User> findByMobile(String mobile);
+
     // find by email
     Optional<User> findByEmail(String email);
 

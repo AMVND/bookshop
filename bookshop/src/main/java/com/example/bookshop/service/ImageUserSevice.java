@@ -19,23 +19,23 @@ import java.util.Optional;
 @RequiredArgsConstructor
 @Transactional
 public class ImageUserSevice {
+    private final UserRepository userRepository;
     @Autowired
     private ImageUserRepository repository;
-    private final UserRepository userRepository;
 
     public String uploadImage(MultipartFile file) throws IOException {
         ImageUser entity = repository.findByUserId(SecurityUtils.getPrincipal().getId()).orElse(null);
-        if (entity == null){
+        if (entity == null) {
             System.out.println("chưa có ảnh");
             ImageUser imageData = repository.save(ImageUser.builder()
-                            .user(SecurityUtils.getPrincipal())
-                    .name("user-"+ SecurityUtils.getPrincipal().getId())
+                    .user(SecurityUtils.getPrincipal())
+                    .name("user-" + SecurityUtils.getPrincipal().getId())
                     .type(file.getContentType())
                     .imageData(ImageUtils.compressImage(file.getBytes())).build());
             if (imageData != null) {
                 User user = userRepository.findById(String.valueOf(SecurityUtils.getPrincipal().getId()))
                         .orElseThrow();
-                user.setPhotos("/api/v1/auth/image/user/"+imageData.getName());
+                user.setPhotos("/api/v1/auth/image/user/" + imageData.getName());
                 return "file uploaded successfully : " + imageData.getName();
             }
         } else {
@@ -44,7 +44,7 @@ public class ImageUserSevice {
             entity.setType(file.getContentType());
             User user = userRepository.findById(String.valueOf(SecurityUtils.getPrincipal().getId()))
                     .orElseThrow();
-            user.setPhotos("/api/v1/auth/image/user/"+entity.getName());
+            user.setPhotos("/api/v1/auth/image/user/" + entity.getName());
             return "file uploaded successfully : " + entity.getName();
         }
 

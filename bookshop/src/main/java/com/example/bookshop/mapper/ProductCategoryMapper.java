@@ -1,4 +1,5 @@
 package com.example.bookshop.mapper;
+
 import com.example.bookshop.domain.ProductCategory;
 import com.example.bookshop.dto.ProductCategoryDto;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +10,7 @@ import java.util.List;
 
 
 @Component
-public class ProductCategoryMapper implements EntityMapper<ProductCategoryDto, ProductCategory>{
+public class ProductCategoryMapper implements EntityMapper<ProductCategoryDto, ProductCategory> {
     @Autowired
     ProductMapper productMapper;
     @Autowired

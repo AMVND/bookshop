@@ -1,10 +1,14 @@
 package com.example.bookshop.service;
 
 import com.example.bookshop.config.SecurityUtils;
-import com.example.bookshop.domain.*;
-import com.example.bookshop.repository.*;
+import com.example.bookshop.domain.Order;
+import com.example.bookshop.domain.OrderItem;
+import com.example.bookshop.domain.Product;
 import com.example.bookshop.dto.OrderItemDto;
 import com.example.bookshop.mapper.OrderItemMapper;
+import com.example.bookshop.repository.OrderItemRepository;
+import com.example.bookshop.repository.OrderRepository;
+import com.example.bookshop.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,8 +20,8 @@ import java.util.List;
 @RequiredArgsConstructor
 @Transactional
 public class OrderItemService {
-    private final OrderItemRepository orderItemRepository;
     public final OrderItemMapper orderItemMapper;
+    private final OrderItemRepository orderItemRepository;
     private final ProductRepository productRepository;
     private final OrderRepository orderRepository;
 
@@ -77,7 +81,7 @@ public class OrderItemService {
 
     public List<OrderItemDto> findOrderItemByOrderId(String orderDetail) {
         Order order = orderRepository.findById(orderDetail).orElse(null);
-        if(order.getUser().getId() == SecurityUtils.getPrincipal().getId()){
+        if (order.getUser().getId() == SecurityUtils.getPrincipal().getId()) {
             List<OrderItem> entity = orderItemRepository.findOrderItemByOrderId(order.getId());
             List<OrderItemDto> dtos = orderItemMapper.toDo(entity);
             return dtos;
@@ -88,7 +92,7 @@ public class OrderItemService {
     }
 
     public List<OrderItemDto> findByOrderId(String orderId) {
-        Order order = orderRepository.findById(orderId).orElseThrow(()-> new RuntimeException("Không tìm thấy thông tin của order yêu cầu: "+orderId));
+        Order order = orderRepository.findById(orderId).orElseThrow(() -> new RuntimeException("Không tìm thấy thông tin của order yêu cầu: " + orderId));
         List<OrderItem> entity = orderItemRepository.findOrderItemByOrderId(order.getId());
         List<OrderItemDto> dtos = orderItemMapper.toDo(entity);
         return dtos;

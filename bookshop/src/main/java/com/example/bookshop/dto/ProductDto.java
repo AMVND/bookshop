@@ -12,7 +12,7 @@ public class ProductDto {
     private Long userId;
     private String title;
     private String slug;
-    private String author;
+    private String summary;
     private Float price;
     private Float discount;
     private String photos;
@@ -21,7 +21,7 @@ public class ProductDto {
     private Instant updatedAt;
     private Instant endsAt;
     private Integer status;
-    private String details;
+    private String content;
     private String category;
     private RatingInfo rating;
 }

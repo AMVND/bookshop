@@ -1,8 +1,6 @@
 package com.example.bookshop.repository;
 
 import com.example.bookshop.domain.Order;
-import com.example.bookshop.domain.Product;
-import com.example.bookshop.domain.User;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -15,7 +13,7 @@ import java.util.Optional;
 
 @Repository
 public interface OrderRepository extends JpaRepository<Order, String> {
-    String db = "book_shop";
+    String db = "shop";
     /*
         todo: các trạng thái của order
         Trạng thái của đơn đặt hàng có thể là

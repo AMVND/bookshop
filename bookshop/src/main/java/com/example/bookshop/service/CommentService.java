@@ -1,11 +1,12 @@
 package com.example.bookshop.service;
+
 import com.example.bookshop.config.SecurityUtils;
 import com.example.bookshop.domain.Comment;
 import com.example.bookshop.domain.Product;
-import com.example.bookshop.repository.CommentRepository;
-import com.example.bookshop.repository.ProductRepository;
 import com.example.bookshop.dto.CommentDto;
 import com.example.bookshop.mapper.CommentMapper;
+import com.example.bookshop.repository.CommentRepository;
+import com.example.bookshop.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -39,7 +40,8 @@ public class CommentService {
                 commentRepository.delete(comment1);
                 System.out.println("xoá các bình luận đã phản hồi");
             });
-        };
+        }
+        ;
         commentRepository.delete(comment);
         System.out.println("xoá comment");
 

@@ -6,8 +6,9 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+
 @Component
-public class CategoryMapper implements EntityMapper<CategoryDto, Category>{
+public class CategoryMapper implements EntityMapper<CategoryDto, Category> {
     @Override
     public CategoryDto toDo(Category entity) {
         CategoryDto dto = new CategoryDto();

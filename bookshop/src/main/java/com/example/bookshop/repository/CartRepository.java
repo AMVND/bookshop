@@ -10,8 +10,9 @@ import java.util.Optional;
 
 @Repository
 public interface CartRepository extends JpaRepository<Cart, String> {
+    String db = "shop";
+
     List<Cart> findAllByUserId(Long userId);
-    String db = "book_shop";
     /*
         todo: các trạng thái của cart
         Trạng thái của đơn đặt hàng có thể là
@@ -20,8 +21,7 @@ public interface CartRepository extends JpaRepository<Cart, String> {
 
      */
 
-
-    @Query(value = "select c.* from "+ db +".cart c where user_id = :userId and status = :status order by updated_at DESC", nativeQuery = true)
+    @Query(value = "select c.* from " + db + ".cart c where user_id = :userId and status = :status order by updated_at DESC", nativeQuery = true)
     List<Cart> findUsersCart(Long userId, String status);
 
     @Query(value = "select * from cart as c where c.user_id = :userId and c.status = 0 ", nativeQuery = true)

@@ -1,7 +1,8 @@
 package com.example.bookshop.controller;
-import com.example.bookshop.service.CategoryService;
+
 import com.example.bookshop.dto.APIResponse;
 import com.example.bookshop.dto.CategoryDto;
+import com.example.bookshop.service.CategoryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
@@ -34,20 +35,23 @@ public class CategoryController {
     }
 
     @GetMapping("/api")
-    public List<CategoryDto> findAll(){
+    public List<CategoryDto> findAll() {
         List<CategoryDto> dtos = categoryService.findAll();
         return dtos;
     }
+
     @GetMapping("/api/filter")
-    public List<CategoryDto> filter(@RequestParam String title){
+    public List<CategoryDto> filter(@RequestParam String title) {
         List<CategoryDto> dtos = categoryService.filter(title);
         return dtos;
     }
+
     @GetMapping("/api/single-product-category")
-    public CategoryDto singleProductCategory(@RequestParam String field){
+    public CategoryDto singleProductCategory(@RequestParam String field) {
         return categoryService.singleProductCategory(field);
 
     }
+
     // todo: findAllCategory
     @GetMapping("/auth/admin/{offset}/{pageSize}")
     private APIResponse<Page<CategoryDto>> findAllCategory(
@@ -62,9 +66,10 @@ public class CategoryController {
         );
         return new APIResponse<>(dtos.getSize(), dtos);
     }
+
     // todo: findCategoryById
     @GetMapping("/api/{id}")
-    private CategoryDto findCategoryById(@PathVariable String id){
+    private CategoryDto findCategoryById(@PathVariable String id) {
         CategoryDto dto = categoryService.findById(id);
         return dto;
     }

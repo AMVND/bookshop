@@ -1,6 +1,7 @@
 package com.example.bookshop.controller;
-import com.example.bookshop.service.CartService;
+
 import com.example.bookshop.dto.CartDto;
+import com.example.bookshop.service.CartService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -51,14 +52,14 @@ public class CartController {
 
     // Hiển thị tất cả các giỏ hàng cart
     @GetMapping("/auth")
-    public List<CartDto> findAll(){
+    public List<CartDto> findAll() {
         List<CartDto> dtos = cartService.findAll();
         return dtos;
     }
 
     // Hiển thị các giỏ hàng cart của user có id = userID
     @GetMapping("/auth/{userId}")
-    public List<CartDto> findAllByUserId(@PathVariable("userId") Long userId){
+    public List<CartDto> findAllByUserId(@PathVariable("userId") Long userId) {
         List<CartDto> dtos = cartService.findAllByUserId(userId);
         return dtos;
     }
@@ -66,19 +67,20 @@ public class CartController {
     // get data cart có id?
     // trong đó: id của user đăng nhập phải giống với id của user có trong thông tin của cart đó
     @GetMapping("/auth/my-cart/{id}")
-    public CartDto findMyCartById(@PathVariable String id){
+    public CartDto findMyCartById(@PathVariable String id) {
         CartDto dto = cartService.findMyCartById(id);
         return dto;
     }
 
     // get all cart - Security user
     @GetMapping("/auth/my-cart")
-    public List<CartDto> findUsersCart(@RequestParam String status){
+    public List<CartDto> findUsersCart(@RequestParam String status) {
         List<CartDto> dtos = cartService.findUsersCart(status);
         return dtos;
     }
+
     @GetMapping("/auth/active")
-    public ResponseEntity<?> isActiveCart(){
+    public ResponseEntity<?> isActiveCart() {
         CartDto dto = cartService.isActiveCart();
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }

@@ -1,4 +1,5 @@
 package com.example.bookshop.mapper;
+
 import com.example.bookshop.domain.ProductReview;
 import com.example.bookshop.dto.ProductReviewDto;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -6,12 +7,14 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+
 @Component
-public class ProductReviewMapper implements EntityMapper<ProductReviewDto, ProductReview>{
+public class ProductReviewMapper implements EntityMapper<ProductReviewDto, ProductReview> {
     @Autowired
     ProductMapper productMapper;
     @Autowired
     UserMapper userMapper;
+
     @Override
     public ProductReviewDto toDo(ProductReview entity) {
         ProductReviewDto dto = new ProductReviewDto();

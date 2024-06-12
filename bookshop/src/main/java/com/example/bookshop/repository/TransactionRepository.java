@@ -1,6 +1,5 @@
 package com.example.bookshop.repository;
 
-import com.example.bookshop.domain.Order;
 import com.example.bookshop.domain.Transaction;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -14,7 +13,8 @@ import java.util.Optional;
 @Repository
 
 public interface TransactionRepository extends JpaRepository<Transaction, String> {
-    String db = "book_shop";
+    String db = "shop";
+
     /*
         todo: các trạng thái của transaction:
         0 -> user - Chưa thanh toán : mới
@@ -60,6 +60,6 @@ public interface TransactionRepository extends JpaRepository<Transaction, String
     );
 
     // todo: tìm kiếm phiếu thanh toán theo id của phiếu order
-    @Query(value = "select * from "+db+".transaction where order_id = :orderId ", nativeQuery = true)
+    @Query(value = "select * from " + db + ".transaction where order_id = :orderId ", nativeQuery = true)
     Optional<Transaction> findByOrderId(@Param("orderId") Long orderId);
 }

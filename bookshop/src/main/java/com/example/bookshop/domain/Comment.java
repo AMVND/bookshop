@@ -1,4 +1,5 @@
 package com.example.bookshop.domain;
+
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -13,7 +14,7 @@ public class Comment {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(name= "parent_id")
+    @Column(name = "parent_id")
     private Long parentId;
     @ManyToOne
     @JoinColumn(name = "product_id", nullable = false)

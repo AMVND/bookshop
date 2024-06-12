@@ -2,10 +2,10 @@ package com.example.bookshop.service;
 
 import com.example.bookshop.domain.Category;
 import com.example.bookshop.domain.ProductCategory;
-import com.example.bookshop.repository.CategoryRepository;
-import com.example.bookshop.repository.ProductCategoryRepository;
 import com.example.bookshop.dto.ProductCategoryDto;
 import com.example.bookshop.mapper.ProductCategoryMapper;
+import com.example.bookshop.repository.CategoryRepository;
+import com.example.bookshop.repository.ProductCategoryRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -85,7 +85,7 @@ public class ProductCategoryService {
     public String handleChangeProductCategory(Long productId, String categoryId) {
         ProductCategory entity = productCategoryRepository.findByProductId(productId).orElse(null);
         Category category = categoryRepository.findById(categoryId).orElse(null);
-        if (entity != null && category != null){
+        if (entity != null && category != null) {
             entity.setCategory(category);
             productCategoryRepository.save(entity);
             return "true";

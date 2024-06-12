@@ -1,13 +1,14 @@
 package com.example.bookshop.service;
+
 import com.example.bookshop.config.SecurityUtils;
 import com.example.bookshop.domain.Cart;
 import com.example.bookshop.domain.CartItem;
 import com.example.bookshop.domain.Product;
+import com.example.bookshop.dto.CartItemDto;
+import com.example.bookshop.mapper.CartItemMapper;
 import com.example.bookshop.repository.CartItemRepository;
 import com.example.bookshop.repository.CartRepository;
 import com.example.bookshop.repository.ProductRepository;
-import com.example.bookshop.dto.CartItemDto;
-import com.example.bookshop.mapper.CartItemMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,8 +20,8 @@ import java.util.List;
 @RequiredArgsConstructor
 @Transactional
 public class CartItemService {
-    private final CartItemRepository cartItemRepository;
     public final CartItemMapper cartItemMapper;
+    private final CartItemRepository cartItemRepository;
     private final ProductRepository productRepository;
     private final CartRepository cartRepository;
 
@@ -30,7 +31,7 @@ public class CartItemService {
 
         CartItem entity = cartItemMapper.toEntity(dto);
         Cart cartId = cartRepository.isActiveCart(SecurityUtils.getPrincipal().getId()).orElseThrow(
-                ()-> new RuntimeException("Không tìm thấy giỏ hàng!"));
+                () -> new RuntimeException("Không tìm thấy giỏ hàng!"));
 
         // Set product
         // Kiểm tra product đó trong list product có tồn tại hay không
@@ -165,7 +166,7 @@ public class CartItemService {
 
     public List<CartItemDto> findCartItemByProductUserId() {
         Long productUserId = SecurityUtils.getPrincipal().getId();
-        List<CartItem> entity = cartItemRepository.findCartItemByProductUserId(Long.valueOf(productUserId));
+        List<CartItem> entity = cartItemRepository.findCartItemByProductUserId(productUserId);
         List<CartItemDto> dtos = cartItemMapper.toDo(entity);
         return dtos;
     }

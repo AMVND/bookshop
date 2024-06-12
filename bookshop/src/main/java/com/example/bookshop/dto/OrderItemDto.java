@@ -1,4 +1,5 @@
 package com.example.bookshop.dto;
+
 import lombok.Data;
 
 import java.time.Instant;

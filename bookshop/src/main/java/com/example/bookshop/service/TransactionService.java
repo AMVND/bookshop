@@ -2,13 +2,16 @@ package com.example.bookshop.service;
 
 import com.example.bookshop.config.Config;
 import com.example.bookshop.config.SecurityUtils;
-import com.example.bookshop.domain.*;
+import com.example.bookshop.domain.Order;
+import com.example.bookshop.domain.Transaction;
 import com.example.bookshop.dto.CheckPaymentDto;
 import com.example.bookshop.dto.PaymentDto;
 import com.example.bookshop.dto.TransactionDto;
 import com.example.bookshop.dto.TransactionStatusDto;
-import com.example.bookshop.repository.*;
 import com.example.bookshop.mapper.TransactionMapper;
+import com.example.bookshop.repository.OrderRepository;
+import com.example.bookshop.repository.TransactionRepository;
+import com.example.bookshop.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -27,8 +30,8 @@ import java.util.*;
 @RequiredArgsConstructor
 @Transactional
 public class TransactionService {
-    private final TransactionRepository transactionRepository;
     public final TransactionMapper transactionMapper;
+    private final TransactionRepository transactionRepository;
     private final UserRepository userRepository;
     private final OrderRepository orderRepository;
 

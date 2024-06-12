@@ -10,11 +10,10 @@ function App(props) {
     return (
         <Fragment>
             <NavigationBar />
-            {/* <DrawerHeader /> */}
-            {/* <Sidenav /> */}
             {/* <br/><br/><br/> */}
             <ScrollToTop smooth />
             <Router />
+            <hr/>
             <Footer />
         </Fragment>
     );

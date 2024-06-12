@@ -1,13 +1,12 @@
 package com.example.bookshop.dto;
 
-import com.example.bookshop.domain.Role;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.io.Serializable;
 import java.time.Instant;
+
 @Data
 @Builder
 @AllArgsConstructor

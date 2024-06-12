@@ -1,4 +1,5 @@
 package com.example.bookshop.domain;
+
 import jakarta.persistence.*;
 import lombok.Data;
 

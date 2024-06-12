@@ -1,6 +1,7 @@
 package com.example.bookshop.controller;
-import com.example.bookshop.service.CartItemService;
+
 import com.example.bookshop.dto.CartItemDto;
+import com.example.bookshop.service.CartItemService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -33,30 +34,34 @@ public class CartItemController {
     // Người bán thực hiện delete: xoá cart item của người người mua khỏi giỏ hàng của họ vì lý do nào đó
 
     @DeleteMapping("/auth/shop/product-cart/{id}")
-    public void removeProductCartFromUser(@PathVariable String id){
+    public void removeProductCartFromUser(@PathVariable String id) {
         cartItemService.removeProductCartFromUser(id);
     }
+
     // Hiển thị tất cả các item của tất cả giỏ hàng
     @GetMapping("/auth")
-    public List<CartItemDto> findAll(){
+    public List<CartItemDto> findAll() {
         List<CartItemDto> dtos = cartItemService.findAll();
         return dtos;
     }
+
     // Hiển thị tất cả các item của giỏ hàng có id: cartId
     @GetMapping("/auth/cart/{cartId}")
-    public List<CartItemDto> findAllByCartId(@PathVariable("cartId") Long cartId){
+    public List<CartItemDto> findAllByCartId(@PathVariable("cartId") Long cartId) {
         List<CartItemDto> dtos = cartItemService.findByCartId(cartId);
         return dtos;
     }
+
     // todo: hiển thị tất cả các item của giỏ hàng đang được sử dụng
     @GetMapping("/auth/active")
-    public ResponseEntity<List<CartItemDto>> isActiveCartItem(){
+    public ResponseEntity<List<CartItemDto>> isActiveCartItem() {
         List<CartItemDto> dtos = cartItemService.isActiveCartItem();
         return ResponseEntity.ok(dtos);
     }
+
     // người bán quản lý hiện trạng các product được đặt trong giỏ hàng: (chỉ có thể xoá)
     @GetMapping("/auth/shop/product-cart")
-    public List<CartItemDto> findCartItemByProductUserId(){
+    public List<CartItemDto> findCartItemByProductUserId() {
         List<CartItemDto> dtos = cartItemService.findCartItemByProductUserId();
         return dtos;
     }

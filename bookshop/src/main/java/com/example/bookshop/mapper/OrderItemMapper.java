@@ -1,4 +1,5 @@
 package com.example.bookshop.mapper;
+
 import com.example.bookshop.domain.OrderItem;
 import com.example.bookshop.dto.OrderItemDto;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -6,12 +7,14 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+
 @Component
-public class OrderItemMapper implements EntityMapper<OrderItemDto, OrderItem>{
+public class OrderItemMapper implements EntityMapper<OrderItemDto, OrderItem> {
     @Autowired
     ProductMapper productMapper;
     @Autowired
     OrderMapper orderMapper;
+
     @Override
     public OrderItemDto toDo(OrderItem entity) {
         OrderItemDto dto = new OrderItemDto();

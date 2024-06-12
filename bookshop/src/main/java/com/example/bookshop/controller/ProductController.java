@@ -1,10 +1,11 @@
 package com.example.bookshop.controller;
+
+import com.example.bookshop.dto.APIResponse;
+import com.example.bookshop.dto.ProductDto;
 import com.example.bookshop.payload.response.DataResponse;
 import com.example.bookshop.projection.ProductInfo;
 import com.example.bookshop.service.ImageProductService;
 import com.example.bookshop.service.ProductService;
-import com.example.bookshop.dto.APIResponse;
-import com.example.bookshop.dto.ProductDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
@@ -234,6 +235,7 @@ public class ProductController {
     public ResponseEntity<?> filterProductByCategory() {
         return ResponseEntity.status(HttpStatus.OK).body(productService.filterProductByCategory());
     }
+
     // todo: hiển thị danh sách sản phẩm bán chạy nhất
     @GetMapping("/api/best_selling_product/{offset}/{pageSize}")
     public APIResponse<Page<ProductInfo>> findBestSellingProduct(
@@ -245,7 +247,7 @@ public class ProductController {
             @RequestParam String sort,
             @RequestParam String field
 
-    ){
+    ) {
         Page<ProductInfo> dtos = productService.findBestSellingProduct(
                 offset, pageSize,
                 title, time1, time2,

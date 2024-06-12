@@ -1,4 +1,5 @@
 package com.example.bookshop.mapper;
+
 import com.example.bookshop.domain.Product;
 import com.example.bookshop.dto.ProductDto;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -6,11 +7,13 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+
 @Component
-public class ProductMapper implements EntityMapper<ProductDto, Product>{
+public class ProductMapper implements EntityMapper<ProductDto, Product> {
 
     @Autowired
     UserMapper userMapper;
+
     @Override
     public ProductDto toDo(Product entity) {
         ProductDto dto = new ProductDto();
@@ -19,7 +22,7 @@ public class ProductMapper implements EntityMapper<ProductDto, Product>{
         dto.setTitle(entity.getTitle());
         dto.setSlug(entity.getSlug());
         dto.setPhotos((entity.getPhotos()));
-        dto.setAuthor(entity.getAuthor());
+        dto.setSummary(entity.getSummary());
         dto.setPrice(entity.getPrice());
         dto.setDiscount(entity.getDiscount());
         dto.setQuantity(entity.getQuantity());
@@ -27,7 +30,7 @@ public class ProductMapper implements EntityMapper<ProductDto, Product>{
         dto.setUpdatedAt(entity.getUpdatedAt());
         dto.setEndsAt(entity.getEndsAt());
         dto.setStatus(entity.getStatus());
-        dto.setDetails(entity.getDetails());
+        dto.setContent(entity.getContent());
         return dto;
     }
 
@@ -39,7 +42,7 @@ public class ProductMapper implements EntityMapper<ProductDto, Product>{
         entity.setTitle(dto.getTitle());
         entity.setSlug(dto.getSlug());
         entity.setPhotos(dto.getPhotos());
-        entity.setAuthor(dto.getAuthor());
+        entity.setSummary(dto.getSummary());
         entity.setPrice(dto.getPrice());
         entity.setDiscount(dto.getDiscount());
         entity.setQuantity(dto.getQuantity());
@@ -47,7 +50,7 @@ public class ProductMapper implements EntityMapper<ProductDto, Product>{
         entity.setUpdatedAt(dto.getUpdatedAt());
         entity.setEndsAt(dto.getEndsAt());
         entity.setStatus(dto.getStatus());
-        entity.setDetails(dto.getDetails());
+        entity.setContent(dto.getContent());
         return entity;
     }
 

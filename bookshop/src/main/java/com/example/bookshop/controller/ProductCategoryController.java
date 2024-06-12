@@ -1,7 +1,8 @@
 package com.example.bookshop.controller;
-import com.example.bookshop.service.ProductCategoryService;
+
 import com.example.bookshop.dto.APIResponse;
 import com.example.bookshop.dto.ProductCategoryDto;
+import com.example.bookshop.service.ProductCategoryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
@@ -27,11 +28,12 @@ public class ProductCategoryController {
     public void edit(@RequestBody ProductCategoryDto dto, @PathVariable("id") Long id) {
         productCategoryService.edit(id, dto);
     }
+
     @PutMapping("/auth/product/{productId}/category/{categoryId}")
     public ResponseEntity<?> handleChangeProductCategory(
             @PathVariable Long productId,
             @PathVariable String categoryId
-    ){
+    ) {
         return ResponseEntity.status(HttpStatus.OK).body(productCategoryService.handleChangeProductCategory(productId, categoryId));
     }
 

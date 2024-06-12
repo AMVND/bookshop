@@ -17,7 +17,7 @@ public class Tokens {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    public String id;
+    public Integer id;
 
     @Column(name = "token")
     public String token;
@@ -26,10 +26,10 @@ public class Tokens {
     @Enumerated(EnumType.STRING)
     public TokenType tokenType = TokenType.BEARER;
 
-    @Column(name = "revoked",nullable = false)
+    @Column(name = "revoked", nullable = false)
     public boolean revoked;
 
-    @Column(name = "expired",nullable = false)
+    @Column(name = "expired", nullable = false)
     public boolean expired;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)

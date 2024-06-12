@@ -1,31 +1,40 @@
 import * as React from "react";
+import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
+import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
+import MenuIcon from "@mui/icons-material/Menu";
+import Container from "@mui/material/Container";
 import Avatar from "@mui/material/Avatar";
+import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
+import HomeIcon from "@mui/icons-material/Home";
 import { Link } from "react-router-dom";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import AssignmentIcon from "@mui/icons-material/Assignment";
 // test redux
+import DrawerHeader from "../common/DrawerHeader";
 import API from "../Api/Api";
 import axios from "axios";
 
 //
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
-
-//
 function NavigationBar() {
+    const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
     const [user, setUser] = React.useState({});
 
+    const handleOpenNavMenu = (event) => {
+        setAnchorElNav(event.currentTarget);
+    };
     const handleOpenUserMenu = (event) => {
         setAnchorElUser(event.currentTarget);
+    };
+
+    const handleCloseNavMenu = () => {
+        setAnchorElNav(null);
     };
 
     const handleCloseUserMenu = () => {
@@ -71,30 +80,84 @@ function NavigationBar() {
     React.useEffect(() => {
         loadDataUser();
     }, [loadDataUser]);
-  return (
-    <Navbar collapseOnSelect expand="lg" className="color-">
-      <Container>
-        <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
-        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-        <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="me-auto">
-            <Nav.Link><Link to={"/"}>Trang chủ</Link></Nav.Link>
-            <Nav.Link><Link to={"/product"}>Danh mục sách</Link></Nav.Link>
-            <NavDropdown title="Dropdown" id="collapsible-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">
-                Another action
-              </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">
-                Separated link
-              </NavDropdown.Item>
-            </NavDropdown>
-          </Nav>
-          <Nav>
-            <Nav.Link>
-            <Box sx={{ flexGrow: 0 }}>
+    return (
+        <Box>
+            <AppBar position="fixed" className="navbar p-0">
+                <Container maxWidth="xl">
+                    <Toolbar disableGutters>
+                        {/* Toàn màn hình */}
+                        <HomeIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
+
+                        <Typography
+                            variant="h6"
+                            noWrap
+                            sx={{
+                                mr: 2,
+                                display: { xs: "none", md: "flex" },
+                                fontWeight: 700,
+                            }}
+                        >
+                            <Link to={"/"}>Trang chủ</Link>
+                        </Typography>
+
+                        <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+                            <IconButton
+                                size="large"
+                                aria-label="account of current user"
+                                aria-controls="menu-appbar"
+                                aria-haspopup="true"
+                                onClick={handleOpenNavMenu}
+                                color="inherit"
+                            >
+                                <MenuIcon />
+                            </IconButton>
+                            <Menu
+                                id="menu-appbar"
+                                anchorEl={anchorElNav}
+                                anchorOrigin={{
+                                    vertical: "bottom",
+                                    horizontal: "left",
+                                }}
+                                keepMounted
+                                transformOrigin={{
+                                    vertical: "top",
+                                    horizontal: "left",
+                                }}
+                                open={Boolean(anchorElNav)}
+                                onClose={handleCloseNavMenu}
+                                sx={{
+                                    display: { xs: "block", md: "none" },
+                                }}
+                            >
+                                {/* Các page */}
+                                <MenuItem onClick={handleCloseNavMenu}>
+                                    <Typography textAlign="center">
+                                        <Link to={"/product"}>Sản phẩm</Link>
+                                    </Typography>
+                                </MenuItem>
+                            </Menu>
+                        </Box>
+                        {/* Màn hình hẹp */}
+                        <HomeIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
+                        <Typography
+                            variant="h5"
+                            sx={{
+                                mr: 2,
+                                display: { xs: "flex", md: "none" },
+                                flexGrow: 1,
+                                fontWeight: 700,
+                            }}
+                        >
+                            <Link to={"/"}>Trang chủ</Link>
+                        </Typography>
+                        <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+                            {/* Các page */}
+                            <Button onClick={handleCloseNavMenu} sx={{ my: 2, color: "white", display: "block" }}>
+                                <Link to={"/product"}>Sản phẩm</Link>
+                            </Button>
+                        </Box>
+                        {/* fff */}
+                        <Box sx={{ flexGrow: 0 }}>
                             {localStorage.getItem("token") === null ? (
                                 <>
                                     <Typography className="btn btn-outline-light btn-rounded">
@@ -215,13 +278,13 @@ function NavigationBar() {
                                     </>
                                 </>
                             )}
-            </Box>
-            </Nav.Link>
-          </Nav>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
-  );
+                        </Box>
+                    </Toolbar>
+                </Container>
+            </AppBar>
+            <DrawerHeader/>
+        </Box>
+    );
 }
 
 export default NavigationBar;

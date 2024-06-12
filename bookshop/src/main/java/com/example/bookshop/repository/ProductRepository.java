@@ -1,6 +1,5 @@
 package com.example.bookshop.repository;
 
-import com.example.bookshop.config.Config;
 import com.example.bookshop.domain.Product;
 import com.example.bookshop.projection.ProductInfo;
 import org.springframework.data.domain.Page;
@@ -17,14 +16,14 @@ import java.util.Optional;
 @Repository
 public interface ProductRepository extends JpaRepository<Product, String> {
 
-    String db = "book_shop";
+    String db = "shop";
 
     @Query(value = "SELECT t.* " +
             "FROM " + db + ".product t " +
             "WHERE id like concat('%',:keySearch, '%') " +
             "or user_id like concat('%', :keySearch, '%')" +
             "or title like concat('%', :keySearch, '%')" +
-            "or author like concat('%', :keySearch, '%')"
+            "or content like concat('%', :keySearch, '%')"
             , nativeQuery = true)
     List<Product> filter(@Param("keySearch") String keySearch);
 
@@ -137,8 +136,8 @@ public interface ProductRepository extends JpaRepository<Product, String> {
             "         INNER JOIN OrderItem oi ON oi.product.id = p.id " +
             "         INNER JOIN Order o ON o.id = oi.order.id " +
             " WHERE o.status = 1 " +
-            " AND  DATE(o.updatedAt) BETWEEN :time1 AND :time2 "+
-            " AND  p.title like concat('%', :title,'%')"+
+            " AND  DATE(o.updatedAt) BETWEEN :time1 AND :time2 " +
+            " AND  p.title like concat('%', :title,'%')" +
             " GROUP BY p.id, p.title "
 //           + " ORDER BY count DESC "
     )

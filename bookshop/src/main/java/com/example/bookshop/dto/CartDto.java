@@ -11,7 +11,7 @@ public class CartDto {
     private UserDto user;
     private Long userId;
     private Integer status;
-//    private String firstName;
+    //    private String firstName;
 //    private String lastName;
 //    private String mobile;
 //    private String email;

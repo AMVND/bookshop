@@ -1,18 +1,19 @@
 package com.example.bookshop.controller;
+
 import com.example.bookshop.auth.AuthenticationResponse;
 import com.example.bookshop.auth.AuthenticationService;
-import com.example.bookshop.service.ImageUserSevice;
-import com.example.bookshop.service.UserService;
 import com.example.bookshop.dto.APIResponse;
 import com.example.bookshop.dto.UserDto;
+import com.example.bookshop.service.ImageUserSevice;
+import com.example.bookshop.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.http.HttpHeaders;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -152,7 +153,7 @@ public class UserController {
 
     // todo: change vendor : thay đổi vendor
     @PutMapping("/auth/change-vendor")
-    public ResponseEntity<?> changeVendor(@RequestParam String id, @RequestParam Integer vendor){
-        return ResponseEntity.ok(userService.changeVendor(id,vendor));
+    public ResponseEntity<?> changeVendor(@RequestParam String id, @RequestParam Integer vendor) {
+        return ResponseEntity.ok(userService.changeVendor(id, vendor));
     }
 }

@@ -1,7 +1,6 @@
 package com.example.bookshop.dto;
-import lombok.Data;
 
-import java.io.Serializable;
+import lombok.Data;
 
 
 @Data

@@ -7,10 +7,12 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+
 @Component
-public class CartMapper implements EntityMapper<CartDto, Cart>{
+public class CartMapper implements EntityMapper<CartDto, Cart> {
     @Autowired
     UserMapper userMapper;
+
     @Override
     public CartDto toDo(Cart entity) {
         CartDto dto = new CartDto();
@@ -60,6 +62,7 @@ public class CartMapper implements EntityMapper<CartDto, Cart>{
         });
         return dtos;
     }
+
     @Override
     public List<Cart> toEntity(List<CartDto> d) {
         return null;

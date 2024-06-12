@@ -27,5 +27,4 @@ public class ProductCategory {
     private Category category;
 
 
-
 }

@@ -7,12 +7,14 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+
 @Component
-public class OrderMapper implements EntityMapper<OrderDto, Order>{
+public class OrderMapper implements EntityMapper<OrderDto, Order> {
     @Autowired
     UserMapper userMapper;
     @Autowired
     CartMapper cartMapper;
+
     @Override
     public OrderDto toDo(Order entity) {
         OrderDto dto = new OrderDto();

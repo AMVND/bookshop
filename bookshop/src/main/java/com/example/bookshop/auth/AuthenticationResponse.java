@@ -1,6 +1,5 @@
 package com.example.bookshop.auth;
 
-import com.example.bookshop.domain.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -12,5 +11,5 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class AuthenticationResponse {
 
-  private String token;
+    private String token;
 }

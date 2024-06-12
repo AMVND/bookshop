@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.Instant;
+
 @Data
 @Builder
 @NoArgsConstructor
@@ -29,8 +30,8 @@ public class Product {
     @Column(name = "slug", nullable = false)
     private String slug;
     @Lob
-    @Column(name = "author")
-    private String author;
+    @Column(name = "summary")
+    private String summary;
 
     @Column(name = "price", nullable = false)
     private Float price;
@@ -56,7 +57,7 @@ public class Product {
     private Integer status;
 
     @Lob
-    @Column(name = "details")
-    private String details;
+    @Column(name = "content")
+    private String content;
 
 }
