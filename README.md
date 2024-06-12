@@ -1,70 +1,104 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# BOOK SHOP
 
-## Available Scripts
+This is a program that runs on the bookstore's web platform. The program is designed in both frontend and backend.
+Sincerely thanks to **Devchido** because this is his project that I cloned
 
-In the project directory, you can run:
+## Requirements System
+ - ### Nodejs : v17.9.1
+ - ### Dependencies :
+       -    "@emotion/react": "^11.10.6"
+       -    "@emotion/styled": "^11.10.6"
+       -    "@fortawesome/fontawesome-free": "^6.5.2"
+       -    "@mui/icons-material": "^5.11.11"
+       -    "@mui/lab": "^5.0.0-alpha.125"
+       -    "@mui/material": "^5.11.15"
+       -    "@testing-library/jest-dom": "^5.16.5"
+       -    "@testing-library/react": "^13.4.0"
+       -    "@testing-library/user-event": "^13.5.0"
+       -    "axios": "^1.3.4"
+       -    "bootstrap": "^5.3.3"
+       -    "cors": "^2.8.5"
+       -    "date-fns": "^2.29.3"
+       -    "font-awesome": "^4.7.0"
+       -    "mdb-react-ui-kit": "^8.0.0"
+       -    "moment": "^2.29.4"
+       -    "notistack": "^3.0.1"
+       -    "prop-types": "^15.8.1"
+       -    "react": "^18.2.0"
+       -    "react-back-to-top-button": "^0.0.14"
+       -    "react-bootstrap": "^2.10.2"
+       -    "react-dom": "^18.2.0"
+       -    "react-redux": "^8.0.5"
+       -    "react-router-dom": "^6.11.1"
+       -    "react-scripts": "5.0.1"
+       -    "react-scroll-to-top": "^3.0.0"
+       -    "redux": "^4.2.1"
+       -    "redux-thunk": "^2.4.2"
+       -    "web-vitals": "^2.1.4"
 
-### `npm start`
+ 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+## Installation
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+There are 2 parts that need to run : 
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+**frontend**
+```bash
+  npm install
+  npm start
+```
+**backend**
+- create database in mySQL 
+```bash
+  CREATE DATABASE shop;
+```
+- update maven 
+- run the project
+## Demo
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- #### Login page
+![Login page](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+- #### Register page
+![Register page](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+- #### Public page
+![Public page](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+- #### Decentralization
+![Decentralization](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## According to
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- [Shoping-cart](https://github.com/devchido/shopping-cart)
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Feedback
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+If you have any feedback, please contact with anivnmusicvideo@gmail.com
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Usage/Examples
 
-### Analyzing the Bundle Size
+```javascript
+import Component from 'my-project'
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+function App() {
+  return <Component />
+}
+```
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+![Logo](https://www.facebook.com/photo.php?fbid=2177977829231304&set=pb.100010573238779.-2207520000&type=3)
 
-### Advanced Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## Features
 
-### Deployment
+- Fullscreen mode
+- Cross platform
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
